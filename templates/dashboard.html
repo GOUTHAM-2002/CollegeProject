@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DashBoard</title>
+    <style>
+        body {
+        background-color: #ff7b00;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+        background-color: #003366;
+          /* Darker orange for header */
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+        }
+
+        a {
+        margin-left: 20px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #ff7b00; /* Darker orange for button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #ff6000; /* Slightly lighter orange on hover */
+        }
+
+        .events {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        .event-box {
+            background-color: #ffedcc; /* Light orange for event box */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px 0; /* Adjusted margin for events */
+            width: 300px;
+        }
+
+        .event-box h3 {
+            color: #ff7b00; /* Darker orange for event title */
+        }
+
+        .event-box p {
+            color: #ffaa80; /* Slightly lighter orange for event description */
+        }
+    </style>
+</head>
+<body>
+    <h1>This is a dashboard</h1>
+    <a href="{{url_for('logout')}}">Click Here to Logout</a>
+    <a href="{{ url_for('create_event') }}" class="btn">Create New Event</a>
+
+    <div class="events">
+        {% for event in events %}
+        <div class="event-box">
+            <h3>{{ event.title }}</h3>
+            <p>{{ event.description }}</p>
+            <p>DATE: {{ event.date.strftime('%Y-%m-%d') }}</p>
+        <!-- Displaying Time -->
+        <!-- Ensure your event_time is a time object so you can format it properly -->
+        <p>TIME: {{ event.time.strftime('%H:%M') }}</p>
+        <!-- Displaying Faculty -->
+        <p>FACULTY: {{ event.faculty }}</p>
+        </div>
+        {% else %}
+    <p>No events found.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

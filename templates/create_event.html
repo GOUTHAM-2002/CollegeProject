@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #001f3f; /* Dark blue background */
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            background-color: #003366; /* Darker blue for header */
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        p {
+            margin: 15px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #66a3ff; /* Light blue for labels */
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #004080; /* Slightly lighter blue for submit button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00509e; /* Darker blue on hover */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>CreateEvent</title>
+</head>
+<body>
+  <h2>Create Event</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.title.label }}<br>
+        {{ form.title(size=32) }}
+    </p>
+    <p>
+        {{ form.description.label }}<br>
+        {{ form.description(size=32) }}
+    </p>
+    <p>
+      {{ form.date.label }}<br>
+      {{ form.date }}
+    </p>
+    <!-- Time Field -->
+    <p>
+      {{ form.time.label }}<br>
+      {{ form.time }}
+    </p>
+    <!-- Faculty Field -->
+    <p>
+      {{ form.faculty.label }}<br>
+      {{ form.faculty(size=32) }}  <!-- Adjust size as needed -->
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+</body>
+</html>
